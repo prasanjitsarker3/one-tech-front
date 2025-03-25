@@ -1,8 +1,14 @@
+import FeaturedCategory from "@/components/HomeComponents/FeaturedCategory/FeaturedCategory";
 
 export default function Home() {
   return (
     <div>
-      Welcome to One tec
+      <div className="py-14">
+
+      </div>
+      <div>
+        <FeaturedCategory />
+      </div>
     </div>
   );
 }
