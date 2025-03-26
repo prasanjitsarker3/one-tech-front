@@ -5,6 +5,6 @@ export interface ProductCardType {
         price: number;
         discountPrice?: number;
         discountPercentage?: number;
-        imageUrl: string;
+        imageUrl: string[];
     }
 }

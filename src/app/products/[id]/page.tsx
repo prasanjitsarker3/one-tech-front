@@ -1,5 +1,7 @@
 import ProductDetails from "@/components/SingleProductComponents/ProductDetails/ProductDetails";
 import product_1 from "@/assets/images/product_1.png";
+import product_2 from "@/assets/images/product_2.png";
+import product_3 from "@/assets/images/product_3.png";
 
 const page = () => {
     const productDetailsData = {
@@ -15,7 +17,7 @@ const page = () => {
             `Display: 16.2" Liquid Retina XDR display (3456x2234)`,
             `Features: Backlit Magic Keyboard, Touch ID, Wi-Fi 6E, Bluetooth 5.3`
         ],
-        productImages: [product_1.src, product_1.src, product_1.src],
+        productImages: [product_1.src, product_2.src, product_3.src],
         specification: {
             specificationName: "Technical Specifications",
             specificationData: [

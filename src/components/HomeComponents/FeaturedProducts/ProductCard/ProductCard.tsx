@@ -4,11 +4,14 @@ import { ProductCardType } from "./ProductCardType";
 
 const ProductCard: React.FC<ProductCardType> = ({ productCardData }) => {
     return (
-        <div className="relative bg-white border border-gray-100 rounded-lg p-4">
+        <div className="relative group bg-white border border-gray-100 rounded-lg p-4">
             <Link href={`products/${productCardData.id}`}>
-                <figure>
-                    <Image src={productCardData.imageUrl} alt="product" width={200} height={200} />
-                </figure>
+                <div className="overflow-hidden">
+                    <figure className="relative h-0 pb-[100%]">
+                        <Image className="absolute transition-all duration-300 top-0 group-hover:left-[100%] left-[0%] h-full w-full" src={productCardData.imageUrl[0]} alt="product" width={200} height={200} />
+                        <Image className="absolute transition-all duration-300 top-0 group-hover:left-[0%] left-[100%] h-full w-full" src={productCardData.imageUrl[1]} alt="product" width={200} height={200} />
+                    </figure>
+                </div>
                 <h2 className="py-5 text-sm hover:underline hover:text-[#f3982d] transition-all duration-300">{productCardData.title}</h2>
             </Link>
             <div className="flex flex-wrap items-center gap-1 md:gap-4">

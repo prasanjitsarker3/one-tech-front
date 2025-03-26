@@ -1,23 +1,27 @@
+"use client";
 import Image from "next/image";
 import ProductSpecification from "../ProductSpecification/ProductSpecification";
 import ProductDescription from "../ProductDescription/ProductDescription";
 import { ProductDetailsType } from "./ProductDetailsType";
+import { useState } from "react";
 
 
 const ProductDetails: React.FC<ProductDetailsType> = ({ productDetailsData }) => {
+    const [currentImg, setCurrentImg] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     return (
         <div className="py-12">
             <div className="flex flex-col md:flex-row justify-between gap-5">
                 <div className="w-full md:w-2/5">
                     <div className="border rounded border-gray-100">
                         <figure>
-                            <Image src={productDetailsData.productImages[0]} alt="Product Image" width={1000} height={750} />
+                            <Image className="transition-all duration-300" src={productDetailsData.productImages[currentImg]} alt="Product Image" width={950} height={750} />
                         </figure>
                     </div>
                     <div className="flex justify-center gap-2 pt-4">
                         {
                             productDetailsData.productImages.map((image, index) => (
-                                <figure key={index} className="border rounded border-gray-100 h-[80px] w-[80px]">
+                                <figure onClick={() => setCurrentImg(index)} key={index} className="border cursor-pointer rounded border-gray-100 h-[80px] w-[80px]">
                                     <Image className="h-full w-full" src={image} alt={`${productDetailsData.title}-${index}`} width={500} height={500} />
                                 </figure>
                             ))
@@ -40,9 +44,9 @@ const ProductDetails: React.FC<ProductDetailsType> = ({ productDetailsData }) =>
                     </div>
                     <div className="flex gap-4">
                         <div className="flex">
-                            <button className="border-gray-200 font-bold text-lg cursor-pointer border h-10 w-10">-</button>
-                            <input className="border-gray-200 text-center outline-0 border h-10 w-16" defaultValue={1} type="text" />
-                            <button className="border-gray-200 font-bold text-lg cursor-pointer border h-10 w-10">+</button>
+                            <button onClick={() => setQuantity(quantity => quantity <= 1 ? 1 : quantity - 1)} className="border-gray-200 font-bold text-lg cursor-pointer border h-10 w-10">-</button>
+                            <input className="border-gray-200 text-center outline-0 border h-10 w-16" defaultValue={quantity} type="text" />
+                            <button onClick={() => setQuantity(quantity => quantity + 1)} className="border-gray-200 font-bold text-lg cursor-pointer border h-10 w-10">+</button>
                         </div>
                         <button className="bg-[#3749bb] text-white md:px-8 px-4 py-2 rounded-xs font-bold cursor-pointer">Buy Now</button>
                     </div>

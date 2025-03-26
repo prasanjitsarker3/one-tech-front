@@ -1,6 +1,7 @@
 import ProductCard from "./ProductCard/ProductCard";
 
 import product_1 from "@/assets/images/product_1.png";
+import product_2 from "@/assets/images/product_2.png";
 
 const FeaturedProducts = () => {
     const products = [
@@ -10,7 +11,7 @@ const FeaturedProducts = () => {
             price: 180000,
             discountPrice: 93000,
             discountPercentage: 10,
-            imageUrl: product_1.src,
+            imageUrl: [product_1.src, product_2.src],
         },
         {
             id: 2,
@@ -18,7 +19,7 @@ const FeaturedProducts = () => {
             price: 180000,
             discountPrice: 93000,
             discountPercentage: 10,
-            imageUrl: product_1.src,
+            imageUrl: [product_1.src, product_2.src],
         },
         {
             id: 3,
@@ -26,7 +27,7 @@ const FeaturedProducts = () => {
             price: 180000,
             discountPrice: 93000,
             discountPercentage: 10,
-            imageUrl: product_1.src,
+            imageUrl: [product_1.src, product_2.src],
         },
         {
             id: 4,
@@ -34,7 +35,7 @@ const FeaturedProducts = () => {
             price: 180000,
             discountPrice: 93000,
             discountPercentage: 10,
-            imageUrl: product_1.src,
+            imageUrl: [product_1.src, product_2.src],
         },
         {
             id: 5,
@@ -42,7 +43,7 @@ const FeaturedProducts = () => {
             price: 180000,
             discountPrice: 93000,
             discountPercentage: 10,
-            imageUrl: product_1.src,
+            imageUrl: [product_1.src, product_2.src],
         },
         {
             id: 6,
@@ -50,7 +51,7 @@ const FeaturedProducts = () => {
             price: 180000,
             discountPrice: 93000,
             discountPercentage: 10,
-            imageUrl: product_1.src,
+            imageUrl: [product_1.src, product_2.src],
         },
         {
             id: 7,
@@ -58,7 +59,7 @@ const FeaturedProducts = () => {
             price: 180000,
             discountPrice: 93000,
             discountPercentage: 10,
-            imageUrl: product_1.src,
+            imageUrl: [product_1.src, product_2.src],
         },
         {
             id: 8,
@@ -66,13 +67,13 @@ const FeaturedProducts = () => {
             price: 180000,
             discountPrice: 93000,
             discountPercentage: 10,
-            imageUrl: product_1.src,
+            imageUrl: [product_1.src, product_2.src],
         },
         {
             id: 9,
             title: "Apple MacBook Pro 16 inch M4 Pro Chip Liquid Retina XDR Display 48GB RAM 512GB SSD",
             price: 180000,
-            imageUrl: product_1.src,
+            imageUrl: [product_1.src, product_2.src],
         },
         {
             id: 10,
@@ -80,7 +81,7 @@ const FeaturedProducts = () => {
             price: 180000,
             discountPrice: 93000,
             discountPercentage: 10,
-            imageUrl: product_1.src,
+            imageUrl: [product_1.src, product_2.src],
         },
         {
             id: 11,
@@ -88,7 +89,7 @@ const FeaturedProducts = () => {
             price: 180000,
             discountPrice: 93000,
             discountPercentage: 10,
-            imageUrl: product_1.src,
+            imageUrl: [product_1.src, product_2.src],
         },
     ]
 

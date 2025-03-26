@@ -9,84 +9,9 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { NavLinksType } from "./NavLinksType";
 
-export function NavLinks() {
-
-    const allMenus = [
-        {
-            id: 1,
-            title: "Desktop",
-            subMenus: [
-                {
-                    id: 1,
-                    title: "Start PC",
-                    slag: "/"
-                },
-                {
-                    id: 2,
-                    title: "Gaming PC",
-                    slag: "/"
-                },
-                {
-                    id: 3,
-                    title: "Barnd PC",
-                    slag: "/"
-                },
-            ]
-        },
-        {
-            id: 2,
-            title: "Laptop",
-            subMenus: [
-                {
-                    id: 1,
-                    title: "Asus",
-                    slag: "/"
-                },
-                {
-                    id: 2,
-                    title: "Dell",
-                    slag: "/"
-                },
-                {
-                    id: 3,
-                    title: "HP",
-                    slag: "/"
-                },
-                {
-                    id: 4,
-                    title: "Lenavo",
-                    slag: "/"
-                },
-            ]
-        },
-        {
-            id: 3,
-            title: "Computer",
-            subMenus: [
-                {
-                    id: 1,
-                    title: "Processor",
-                    slag: "/"
-                },
-                {
-                    id: 2,
-                    title: "Motherboard",
-                    slag: "/"
-                },
-                {
-                    id: 3,
-                    title: "Graphics Card",
-                    slag: "/"
-                },
-                {
-                    id: 4,
-                    title: "SSD",
-                    slag: "/"
-                }
-            ]
-        },
-    ]
+const NavLinks: React.FC<NavLinksType> = ({ allMenus }) => {
 
     return (
         <NavigationMenu>
@@ -107,3 +32,5 @@ export function NavLinks() {
         </NavigationMenu>
     )
 }
+
+export default NavLinks;
