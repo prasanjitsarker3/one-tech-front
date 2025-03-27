@@ -37,6 +37,37 @@ const page = () => {
                     { name: "Refresh Rate", value: "ProMotion technology for adaptive refresh rates up to 120Hz Fixed refresh rates: 47.95Hz, 48.00Hz, 50.00Hz, 59.94Hz, 60.00Hz" },
                 ]
             },
+            {
+                specificationName: "Memory",
+                specificationData: [
+                    { name: "RAM", value: "48GB" },
+                    { name: "RAM Type", value: "Unified memory" },
+                    { name: "Removable", value: "Non-Removable" }
+                ]
+            },
+            {
+                specificationName: "Storage",
+                specificationData: [
+                    { name: "Storage Type", value: "SSD" },
+                    { name: "Storage Capacity", value: "512GB" },
+                    { name: "Storage Upgrade", value: "Configurable to: 1TB, 2TB or 4 TB" }
+                ]
+            },
+            {
+                specificationName: "Graphics",
+                specificationData: [
+                    { name: "Graphics Model", value: "Apple 20-core GPU (Hardware-accelerated ray tracing)" },
+                    { name: "Graphics Memory", value: "Shared" }
+                ]
+            },
+            {
+                specificationName: "Keyboard & TouchPad",
+                specificationData: [
+                    { name: "Keyboard Type", value: "Backlit Magic Keyboard" },
+                    { name: "Keyboard Features", value: "78 (U.S.) keys including 12 full-height function keys and 4 arrow keys in an inverted‑T arrangement Touch ID Ambient light sensor" },
+                    { name: "TouchPad", value: "Force Touch trackpad for precise cursor control and pressure-sensing capabilities; enables Force clicks, accelerators, pressure-sensitive drawing, and Multi-Touch gestures" }
+                ]
+            },
         ],
         description: [
             {
