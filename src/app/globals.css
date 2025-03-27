@@ -3,8 +3,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
+body {
+  font-family: var(--font-lato);
+}
+
 @theme inline {
   --primaryColor: var(--primaryColor);
+  --font-lato: var(--font-lato);
+  --font-roboto: var(--font-roboto);
+  --font-inter: var(--font-inter);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -78,6 +85,9 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+  --font-lato: 'Lato', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-inter: 'Inter', sans-serif;
 }
 
 .dark {

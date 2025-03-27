@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import logo from "@/assets/images/logo.png";
 import NavLinks from "./NavLinks/NavLinks";
 import { Input } from "../ui/input";
 import { FaCartPlus } from "react-icons/fa";
@@ -88,9 +86,10 @@ const Header = () => {
             <div className="container mx-auto px-4 gap-4 flex justify-between items-center">
                 <div>
                     <Link href="/" >
-                        <figure className="max-h-12">
+                        {/* <figure className="max-h-12">
                             <Image className="h-full w-full" src={logo} width={200} height={30} alt="Logo" />
-                        </figure>
+                        </figure> */}
+                        <h2 className="font-bold text-4xl">One Tech</h2>
                     </Link>
                 </div>
 

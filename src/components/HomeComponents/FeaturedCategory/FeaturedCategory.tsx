@@ -1,5 +1,5 @@
 import CategoryCard from "./CategoryCard/CategoryCard";
-import drone from "@/assets/images/logo/drone.png";
+import drone from "@/assets/images/logo/laptop.png";
 
 const FeaturedCategory = () => {
     const categories = [
@@ -7,55 +7,49 @@ const FeaturedCategory = () => {
             id: 1,
             categoryUrl: "/",
             imageUrl: drone.src,
-            title: "Drone"
+            title: "Dell"
         },
         {
             id: 2,
             categoryUrl: "/",
             imageUrl: drone.src,
-            title: "Gimbal"
+            title: "HP"
         },
         {
             id: 3,
             categoryUrl: "/",
             imageUrl: drone.src,
-            title: "Charging Fan"
+            title: "Lenovo"
         },
         {
             id: 4,
             categoryUrl: "/",
             imageUrl: drone.src,
-            title: "TV"
+            title: "Asus"
         },
         {
             id: 5,
             categoryUrl: "/",
             imageUrl: drone.src,
-            title: "Phone"
+            title: "Acer"
         },
         {
             id: 6,
             categoryUrl: "/",
             imageUrl: drone.src,
-            title: "Mobile Accessories"
+            title: "Apple"
         },
         {
             id: 7,
             categoryUrl: "/",
             imageUrl: drone.src,
-            title: "TV"
+            title: "Microsoft"
         },
         {
             id: 8,
             categoryUrl: "/",
             imageUrl: drone.src,
-            title: "Phone"
-        },
-        {
-            id: 9,
-            categoryUrl: "/",
-            imageUrl: drone.src,
-            title: "Mobile Accessories"
+            title: "Samsung"
         },
     ]
     return (
