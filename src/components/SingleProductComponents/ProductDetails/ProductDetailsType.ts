@@ -12,7 +12,7 @@ export interface ProductDetailsType {
                 name: string;
                 value: string;
             }[];
-        };
+        }[];
         description: {
             title: string;
             description: string;
