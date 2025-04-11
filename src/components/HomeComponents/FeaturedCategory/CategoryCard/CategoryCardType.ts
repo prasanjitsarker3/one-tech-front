@@ -1,7 +1,9 @@
+import type React from "react";
 export interface CategoryCardType {
-    categoryData: {
-        categoryUrl: string;
-        imageUrl: string;
-        title: string;
-    }
+  categoryData: {
+    id: number;
+    categoryUrl: string;
+    svg: React.ReactNode;
+    title: string;
+  };
 }

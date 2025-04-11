@@ -1,13 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 body {
   font-family: var(--font-lato);
-}
-
-@theme inline {
   --primaryColor: var(--primaryColor);
   --font-lato: var(--font-lato);
   --font-roboto: var(--font-roboto);
@@ -85,9 +80,9 @@ body {
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
-  --font-lato: 'Lato', sans-serif;
-  --font-roboto: 'Roboto', sans-serif;
-  --font-inter: 'Inter', sans-serif;
+  --font-lato: "Lato", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+  --font-inter: "Inter", sans-serif;
 }
 
 .dark {
@@ -126,10 +121,12 @@ body {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border: var(--color-border);
+    outline: 50% solid var(--color-ring);
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
   }
 }

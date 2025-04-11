@@ -1,70 +1,237 @@
 import CategoryCard from "./CategoryCard/CategoryCard";
-import drone from "@/assets/images/logo/laptop.png";
 
 const FeaturedCategory = () => {
-    const categories = [
-        {
-            id: 1,
-            categoryUrl: "/",
-            imageUrl: drone.src,
-            title: "Dell"
-        },
-        {
-            id: 2,
-            categoryUrl: "/",
-            imageUrl: drone.src,
-            title: "HP"
-        },
-        {
-            id: 3,
-            categoryUrl: "/",
-            imageUrl: drone.src,
-            title: "Lenovo"
-        },
-        {
-            id: 4,
-            categoryUrl: "/",
-            imageUrl: drone.src,
-            title: "Asus"
-        },
-        {
-            id: 5,
-            categoryUrl: "/",
-            imageUrl: drone.src,
-            title: "Acer"
-        },
-        {
-            id: 6,
-            categoryUrl: "/",
-            imageUrl: drone.src,
-            title: "Apple"
-        },
-        {
-            id: 7,
-            categoryUrl: "/",
-            imageUrl: drone.src,
-            title: "Microsoft"
-        },
-        {
-            id: 8,
-            categoryUrl: "/",
-            imageUrl: drone.src,
-            title: "Samsung"
-        },
-    ]
-    return (
-        <div className="container mx-auto px-4">
-            <div>
-                <h3 className="text-center text-lg font-bold text-black">Featured Category</h3>
-                <p className="text-center text-sm py-2">Get Your Desired Product from Featured Category!</p>
-            </div>
-            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4 py-10">
-                {
-                    categories.map((category) => (<CategoryCard key={category.id} categoryData={category} />))
-                }
-            </div>
+  const categories = [
+    {
+      id: 1,
+      categoryUrl: "/category/dell",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#007DB8"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 376.4c-71.6 0-130.4-58.7-130.4-130.4 0-71.6 58.7-130.4 130.4-130.4 71.6 0 130.4 58.7 130.4 130.4 0 71.6-58.8 130.4-130.4 130.4zm0-194.4c-35.2 0-64 28.8-64 64s28.8 64 64 64 64-28.8 64-64-28.8-64-64-64z" />
+        </svg>
+      ),
+      title: "Dell",
+    },
+    {
+      id: 2,
+      categoryUrl: "/category/hp",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#0096D6"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM120.5 226.5h88v58.7h-88v-58.7zm88-78.7h-88v58.7h88v-58.7zm-88 196h88v-58.7h-88v58.7zm177.1-58.7h88v-58.7h-88v58.7zm88-78.7h-88v-58.7h88v58.7zm-88 196h88v-58.7h-88v58.7z" />
+        </svg>
+      ),
+      title: "HP",
+    },
+    {
+      id: 3,
+      categoryUrl: "/category/lenovo",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#E2231A"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-80 351.9c-31.4 0-56.9-25.5-56.9-56.9V176c0-8.8 7.2-16 16-16h81.7c8.8 0 16 7.2 16 16v175.9c0 8.8-7.2 16-16 16h-40.8zm160 0c-31.4 0-56.9-25.5-56.9-56.9V176c0-8.8 7.2-16 16-16h81.7c8.8 0 16 7.2 16 16v175.9c0 8.8-7.2 16-16 16h-40.8z" />
+        </svg>
+      ),
+      title: "Lenovo",
+    },
+    {
+      id: 4,
+      categoryUrl: "/category/asus",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#00539F"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-94.8 343.8c-10.3 0-19.1-6.5-22.4-15.6l-38.9-106.9c-1.2-3.3-4.3-5.5-7.8-5.5h-18.3c-5.5 0-9.3-5.5-7.4-10.8l47.4-130.2c3.3-9.1 12.1-15.6 22.4-15.6h71.8c10.3 0 19.1 6.5 22.4 15.6l47.4 130.2c1.9 5.3-1.9 10.8-7.4 10.8h-18.3c-3.5 0-6.6 2.2-7.8 5.5l-38.9 106.9c-3.3 9.1-12.1 15.6-22.4 15.6h-29.2zm189.6 0c-10.3 0-19.1-6.5-22.4-15.6l-38.9-106.9c-1.2-3.3-4.3-5.5-7.8-5.5h-18.3c-5.5 0-9.3-5.5-7.4-10.8l47.4-130.2c3.3-9.1 12.1-15.6 22.4-15.6h71.8c10.3 0 19.1 6.5 22.4 15.6l47.4 130.2c1.9 5.3-1.9 10.8-7.4 10.8h-18.3c-3.5 0-6.6 2.2-7.8 5.5l-38.9 106.9c-3.3 9.1-12.1 15.6-22.4 15.6h-29.2z" />
+        </svg>
+      ),
+      title: "Asus",
+    },
+    {
+      id: 5,
+      categoryUrl: "/category/acer",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#83B81A"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 96c88.4 0 160 71.6 160 160s-71.6 160-160 160S96 344.4 96 256s71.6-160 160-160zm0 64c-53 0-96 43-96 96s43 96 96 96 96-43 96-96-43-96-96-96z" />
+        </svg>
+      ),
+      title: "Acer",
+    },
+    {
+      id: 6,
+      categoryUrl: "/category/apple",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#000000"
+          className="h-10 w-10"
+        >
+          <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+        </svg>
+      ),
+      title: "Apple",
+    },
+    {
+      id: 7,
+      categoryUrl: "/category/microsoft",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#00A4EF"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM120.5 120.5h115v115h-115v-115zm156 0h115v115h-115v-115zm-156 156h115v115h-115v-115zm156 0h115v115h-115v-115z" />
+        </svg>
+      ),
+      title: "Microsoft",
+    },
+    {
+      id: 8,
+      categoryUrl: "/category/samsung",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#1428A0"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-64 296c0 13.3-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24V216c0-13.3 10.7-24 24-24h80c13.3 0 24 10.7 24 24v88zm192 0c0 13.3-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24V216c0-13.3 10.7-24 24-24h80c13.3 0 24 10.7 24 24v88z" />
+        </svg>
+      ),
+      title: "Samsung",
+    },
+    {
+      id: 9,
+      categoryUrl: "/category/msi",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#FF0000"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-16 408c-66.5 0-120.5-54-120.5-120.5S173.5 175 240 175s120.5 54 120.5 120.5S306.5 416 240 416zm-37.8-267.7c-59.6 11.9-105.1 64.6-105.1 127.7 0 70.9 57.4 128.3 128.3 128.3 63.1 0 115.8-45.6 127.7-105.1-46.5-7.3-111.9-50.9-150.9-150.9z" />
+        </svg>
+      ),
+      title: "MSI",
+    },
+    {
+      id: 10,
+      categoryUrl: "/category/razer",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#00FF00"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm-32-316v116h-67c-10.7 0-16 12.9-8.5 20.5l99 99c4.7 4.7 12.3 4.7 17 0l99-99c7.6-7.6 2.2-20.5-8.5-20.5h-67V140c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12z" />
+        </svg>
+      ),
+      title: "Razer",
+    },
+    {
+      id: 11,
+      categoryUrl: "/category/lg",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#A50034"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 432c-101.7 0-184-82.3-184-184S154.3 72 256 72s184 82.3 184 184-82.3 184-184 184zm20-252h-40c-6.6 0-12 5.4-12 12v116h-67c-10.7 0-16 12.9-8.5 20.5l99 99c4.7 4.7 12.3 4.7 17 0l99-99c7.6-7.6 2.2-20.5-8.5-20.5h-67V200c0-6.6-5.4-12-12-12z" />
+        </svg>
+      ),
+      title: "LG",
+    },
+    {
+      id: 12,
+      categoryUrl: "/category/toshiba",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#FF0000"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z" />
+        </svg>
+      ),
+      title: "Toshiba",
+    },
+    {
+      id: 13,
+      categoryUrl: "/category/huawei",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#CF0A2C"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z" />
+        </svg>
+      ),
+      title: "Huawei",
+    },
+    {
+      id: 14,
+      categoryUrl: "/category/alienware",
+      svg: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          fill="#00A4EF"
+          className="h-10 w-10"
+        >
+          <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm94.4-295.4c4.7-4.7 4.7-12.3 0-17l-22.6-22.6c-4.7-4.7-12.3-4.7-17 0l-54.8 54.8-54.8-54.8c-4.7-4.7-12.3-4.7-17 0l-22.6 22.6c-4.7 4.7-4.7 12.3 0 17l54.8 54.8-54.8 54.8c-4.7 4.7-4.7 12.3 0 17l22.6 22.6c4.7 4.7 12.3 4.7 17 0l54.8-54.8 54.8 54.8c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17L273 256l77.4-77.4z" />
+        </svg>
+      ),
+      title: "Alienware",
+    },
+  ];
+
+  return (
+    <section className="py-12 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="mb-8 text-center">
+          <h2 className="text-3xl font-bold mb-2">Featured Brands</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Explore our collection of premium laptop brands for every need and
+            budget
+          </p>
         </div>
-    );
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+          {categories.map((category) => (
+            <CategoryCard key={category.id} categoryData={category} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default FeaturedCategory;
