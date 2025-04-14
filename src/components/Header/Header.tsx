@@ -10,25 +10,26 @@ import { Button } from "@/components/ui/button";
 import {
   Search,
   ShoppingCart,
-  User,
+  // User,
   Heart,
-  LogOut,
-  Package,
-  Settings,
+  // LogOut,
+  // Package,
+  // Settings,
   X,
 } from "lucide-react";
 import MobileMenu from "./MobileMenu/MobileMenu";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuLabel,
+//   DropdownMenuSeparator,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu";
 
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+// import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import UserDropdown from "../UserDropdown/UserDropdown";
 
 const Header = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -140,13 +141,11 @@ const Header = () => {
 
   return (
     <div
-      className={`py-3 fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
-        visible ? "translate-y-0" : "-translate-y-full"
-      } ${
-        atTop
+      className={`py-3 fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${visible ? "translate-y-0" : "-translate-y-full"
+        } ${atTop
           ? "bg-white border-b border-gray-200"
           : "bg-white/95 backdrop-blur-sm shadow-md"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-4 gap-4 flex justify-between items-center">
         <div>
@@ -210,7 +209,8 @@ const Header = () => {
           </Button>
 
           {/* User Profile Dropdown */}
-          <DropdownMenu>
+
+          {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
@@ -250,7 +250,9 @@ const Header = () => {
                 <span>Log out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu>
+          </DropdownMenu> */}
+
+          <UserDropdown />
         </div>
 
         <MobileMenu links={allMenus} />
