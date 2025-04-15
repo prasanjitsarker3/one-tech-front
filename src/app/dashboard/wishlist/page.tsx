@@ -1,6 +1,7 @@
+import DashboardHeader from '@/components/DashboardComponents/DashboardHeader/DashboardHeader';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaHeart, FaShoppingCart, FaChevronLeft, FaRegHeart } from 'react-icons/fa';
+import { FaHeart, FaShoppingCart, FaRegHeart } from 'react-icons/fa';
 
 const WishlistPage = () => {
 
@@ -31,22 +32,7 @@ const WishlistPage = () => {
     return (
         <div className="min-h-screen bg-gray-50 md:pt-16 pt-28">
             {/* Dashboard Header */}
-            <div className="bg-gray-800 text-white py-6">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <h1 className="text-2xl font-bold">My Wishlist</h1>
-                            <p className="text-gray-300 mt-1">Saved items for later</p>
-                        </div>
-                        <Link
-                            href="/dashboard"
-                            className="flex items-center text-sm text-[#f3982d] hover:text-[#e08a27]"
-                        >
-                            <FaChevronLeft className="mr-1" /> Back to Dashboard
-                        </Link>
-                    </div>
-                </div>
-            </div>
+            <DashboardHeader dashboardHeaderData={{ heading: "My Wishlist", subHeading: "Saved items for later" }} />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {wishlistItems.length > 0 ? (

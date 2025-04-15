@@ -33,7 +33,7 @@ const DashboardPage = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 md:pt-16 pt-28">
-            {/* Dashboard Header */}
+
             <div className="bg-gray-800 text-white py-6">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 className="text-2xl font-bold">My Account</h1>

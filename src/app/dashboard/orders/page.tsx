@@ -1,8 +1,9 @@
+import DashboardHeader from '@/components/DashboardComponents/DashboardHeader/DashboardHeader';
 import Link from 'next/link';
-import { FaShoppingBag, FaCheckCircle, FaTruck, FaTimesCircle, FaChevronLeft } from 'react-icons/fa';
+import { FaShoppingBag, FaCheckCircle, FaTruck, FaTimesCircle } from 'react-icons/fa';
 
 const OrdersPage = () => {
-    
+
     const orders = [
         {
             id: "#LPT-78945",
@@ -43,22 +44,7 @@ const OrdersPage = () => {
     return (
         <div className="min-h-screen bg-gray-50 md:pt-16 pt-28">
             {/* Dashboard Header */}
-            <div className="bg-gray-800 text-white py-6">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <h1 className="text-2xl font-bold">My Orders</h1>
-                            <p className="text-gray-300 mt-1">View your order history</p>
-                        </div>
-                        <Link
-                            href="/dashboard"
-                            className="flex items-center text-sm text-[#f3982d] hover:text-[#e08a27]"
-                        >
-                            <FaChevronLeft className="mr-1" /> Back to Dashboard
-                        </Link>
-                    </div>
-                </div>
-            </div>
+            <DashboardHeader dashboardHeaderData={{ heading: "My Orders", subHeading: "View your order history" }} />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="flex flex-col md:flex-row gap-8">
