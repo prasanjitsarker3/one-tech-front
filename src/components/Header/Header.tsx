@@ -1,116 +1,30 @@
 "use client";
 
-import type React from "react";
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import NavLinks from "./NavLinks/NavLinks";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import {
-  Search,
-  ShoppingCart,
-  User,
-  Heart,
-  LogOut,
-  Package,
-  Settings,
-  X,
-} from "lucide-react";
-import MobileMenu from "./MobileMenu/MobileMenu";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { Search, User, Menu, X, ShoppingCart } from "lucide-react";
+import { toggleDrawer } from "@/redux/Slice/drawerReducer";
+import { useAppDispatch } from "@/redux/hooks";
 
 const Header = () => {
+  const pathname = usePathname();
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
   const [atTop, setAtTop] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [cartCount] = useState(3);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch();
 
-  const allMenus = [
-    {
-      id: 1,
-      title: "Desktop",
-      subMenus: [
-        {
-          id: 1,
-          title: "Start PC",
-          slag: "/",
-        },
-        {
-          id: 2,
-          title: "Gaming PC",
-          slag: "/",
-        },
-        {
-          id: 3,
-          title: "Barnd PC",
-          slag: "/",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Laptop",
-      subMenus: [
-        {
-          id: 1,
-          title: "Asus",
-          slag: "/",
-        },
-        {
-          id: 2,
-          title: "Dell",
-          slag: "/",
-        },
-        {
-          id: 3,
-          title: "HP",
-          slag: "/",
-        },
-        {
-          id: 4,
-          title: "Lenavo",
-          slag: "/",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Computer",
-      subMenus: [
-        {
-          id: 1,
-          title: "Processor",
-          slag: "/",
-        },
-        {
-          id: 2,
-          title: "Motherboard",
-          slag: "/",
-        },
-        {
-          id: 3,
-          title: "Graphics Card",
-          slag: "/",
-        },
-        {
-          id: 4,
-          title: "SSD",
-          slag: "/",
-        },
-      ],
-    },
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Category", href: "/category" },
+    { name: "Product", href: "/products" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
 
   // Handle scroll behavior
@@ -129,133 +43,207 @@ const Header = () => {
     };
   }, [prevScrollPos]);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Searching for:", searchQuery);
-  };
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
+        setMobileMenuOpen(false);
+      }
+    };
 
-  const clearSearch = () => {
-    setSearchQuery("");
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Focus search input when opened
+  useEffect(() => {
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchOpen]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [mobileMenuOpen]);
+
+  const cartCount = 3;
+  const handleToggle = () => {
+    dispatch(toggleDrawer());
   };
 
   return (
-    <div
-      className={`py-3 fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
+    <header
+      className={`py-4 fixed top-0 left-0 right-0 w-full z-40 transition-all duration-300 ${
         visible ? "translate-y-0" : "-translate-y-full"
-      } ${
-        atTop
-          ? "bg-white border-b border-gray-200"
-          : "bg-white/95 backdrop-blur-sm shadow-md"
-      }`}
+      } ${atTop ? "bg-gray-50" : "bg-gray-50 backdrop-blur-sm"}`}
     >
-      <div className="container mx-auto px-4 gap-4 flex justify-between items-center">
-        <div>
-          <Link href="/">
-            <h2 className="font-bold text-4xl">One Tech</h2>
+      <div className=" max-w-6xl mx-auto px-2 flex justify-between items-center">
+        {/* Logo */}
+        <div className="flex items-center h-8">
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/white bg letter logo.png"
+              alt="Mina Curtains & Furnishings"
+              width={200}
+              height={60}
+              className=""
+            />
           </Link>
         </div>
 
-        <div className="hidden md:block">
-          <NavLinks allMenus={allMenus} />
-        </div>
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden flex items-center justify-center"
+          onClick={() => setMobileMenuOpen(true)}
+          aria-label="Open menu"
+        >
+          <Menu className="h-5 w-5 text-[#5d4037]" />
+        </button>
 
-        <div className="flex items-center justify-center gap-3">
-          {/* Enhanced Search Input */}
-          <form onSubmit={handleSearch} className="relative">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-              <Input
-                className="w-full md:w-[200px] lg:w-[300px] pl-9 pr-8 h-9 focus-visible:ring-[#f3982d]"
-                type="text"
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={clearSearch}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                >
-                  <X className="h-4 w-4" />
-                </button>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`relative text-sm md:text-base font-medium transition-colors hover:text-[#FF7200] ${
+                pathname === link.href
+                  ? "primaryColor after:absolute after:bottom-[-6px] after:left-0 after:h-[2px] after:w-full after:bg-[#FF7200]"
+                  : "text-[#5d4037]"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Right Icons */}
+        <div className=" hidden md:block">
+          <div className="flex items-center space-x-4 ">
+            {/* Search */}
+            <button
+              onClick={() => setSearchOpen(!searchOpen)}
+              className="relative flex items-center justify-center h-8 w-8 text-[#5d4037] hover:text-[#8b5e3c] transition-colors"
+              aria-label="Search"
+            >
+              <Search className="h-5 w-5" />
+            </button>
+
+            {/* Cart */}
+            <div
+              onClick={handleToggle}
+              className="relative cursor-pointer flex items-center justify-center h-8 w-8 text-[#5d4037] hover:text-[#8b5e3c] transition-colors"
+            >
+              <ShoppingCart className="h-5 w-5" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                  {cartCount}
+                </span>
               )}
             </div>
-            <button type="submit" className="sr-only">
-              Search
-            </button>
-          </form>
 
-          {/* Wishlist */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden md:flex relative rounded-full h-9 w-9 cursor-pointer"
-          >
-            <Heart className="h-5 w-5" />
-          </Button>
-
-          {/* Cart with Dropdown */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="relative rounded-full h-9 w-9 cursor-pointer "
-          >
-            <ShoppingCart className="h-5 w-5" />
-            {cartCount > 0 && (
-              <Badge className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center bg-[#f3982d] text-black text-xs font-bold rounded-full">
-                {cartCount}
-              </Badge>
-            )}
-          </Button>
-
-          {/* User Profile Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-full h-9 w-9 cursor-pointer"
-              >
-                <Avatar className="h-8 w-8">
-                  <AvatarImage src="https://github.com/shadcn.png" />
-                  <AvatarFallback>
-                    <User className="h-4 w-4" />
-                  </AvatarFallback>
-                </Avatar>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Package className="mr-2 h-4 w-4" />
-                <span>Orders</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Heart className="mr-2 h-4 w-4" />
-                <span>Wishlist</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Log out</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            {/* Account */}
+            <div className="flex items-center justify-center h-8 w-8 text-[#5d4037] hover:text-[#8b5e3c] transition-colors">
+              <User className="h-5 w-5" />
+            </div>
+          </div>
         </div>
-
-        <MobileMenu links={allMenus} />
       </div>
-    </div>
+
+      {/* {searchOpen && (
+        <div className="absolute top-full left-0 right-0 bg-[#f5efe9] border-b border-[#e5d9cf] p-4 shadow-md transition-all">
+          <div className="container mx-auto">
+            <div className="relative">
+              <input
+                ref={searchInputRef}
+                type="text"
+                placeholder="Search products..."
+                className="w-full py-2 pl-10 pr-4 bg-white border border-[#e5d9cf] rounded-md focus:outline-none focus:ring-1 focus:ring-[#8b5e3c] focus:border-[#8b5e3c]"
+              />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#5d4037] h-5 w-5" />
+              <button
+                onClick={() => setSearchOpen(false)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#5d4037] hover:text-[#8b5e3c]"
+                aria-label="Close search"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )} */}
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed top-0 h-[100vh] bg-[#f5efe9] shadow-lg z-40 w-60 left-0 md:hidden">
+          <div className="  w-full p-3 ">
+            <div className=" flex justify-between items-center p-1 primaryColor">
+              <Link
+                href="/"
+                className="flex items-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Image
+                  src="/logo.png"
+                  alt="Mina Curtains & Furnishings"
+                  width={40}
+                  height={40}
+                  className="mr-2"
+                />
+                <div className="">
+                  <h1 className="text-[#5d4037] font-serif text-sm font-semibold leading-none">
+                    MINA CURTAINS
+                  </h1>
+                  <p className="text-[#5d4037] text-xs tracking-wider">
+                    STYLE YOUR SPACE
+                  </p>
+                </div>
+              </Link>
+              <div
+                onClick={() => setMobileMenuOpen(false)}
+                className=" bg-red-500 text-white cursor-pointer"
+              >
+                <X />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col px-3 space-y-1">
+            <nav className="px-3">
+              <ul className="space-y-2">
+                {navLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className={`block py-2 text-base font-medium transition-colors hover:text-[#8b5e3c] ${
+                        pathname === link.href
+                          ? "text-[#8b5e3c]"
+                          : "text-[#5d4037]"
+                      }`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 

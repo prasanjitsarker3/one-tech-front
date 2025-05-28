@@ -130,3 +130,33 @@ body {
     color: var(--color-foreground);
   }
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.required::after {
+  content: " *";
+  color: #e11d48;
+  font-weight: 600;
+}
+
+.optional::after {
+  content: " (optional)";
+  color: #6b7280;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.primaryColor {
+  color: #ff7200;
+}
+
+.primaryBg {
+  background-color: #ff7200;
+}
