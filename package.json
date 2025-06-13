@@ -30,6 +30,7 @@
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
     "react-fast-marquee": "^1.6.5",
+    "react-hook-form": "^7.57.0",
     "react-icons": "^5.5.0",
     "react-redux": "^9.2.0",
     "react-responsive-carousel": "^3.2.23",
