@@ -93,7 +93,7 @@ export function ProductDetail({ productId }: { productId: string }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
         {/* Left side - Product Images */}
-        <div className="space-y-4 h-[40vh] md:h-[80vh] ">
+        <div className="space-y-4 h-[56vh] md:h-[80vh] ">
           <Carousel
             setApi={setMainApi}
             className="w-full rounded-lg overflow-hidden bg-gray-100"
@@ -104,7 +104,7 @@ export function ProductDetail({ productId }: { productId: string }) {
             <CarouselContent>
               {productData.images.map((image: any, index: number) => (
                 <CarouselItem key={index}>
-                  <div className="relative w-full h-[30vh] md:h-[80vh]">
+                  <div className="relative w-full h-[40vh] md:h-[80vh]">
                     <Image
                       src={image || "/placeholder.svg"}
                       alt={`${productData.name} - Image ${index + 1}`}

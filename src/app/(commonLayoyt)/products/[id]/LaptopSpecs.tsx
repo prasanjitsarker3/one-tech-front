@@ -136,7 +136,9 @@ export function LaptopSpecs({ specs }: LaptopSpecsProps) {
   ];
 
   return (
-    <div className="mt-12 border-t pt-8">
+    <div>
+      <hr />
+      <div className="mt-44 md:mt-24 lg:mt-12 border-t pt-12 md:pt-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {specSections.map((section, sectionIndex) => {
           const IconComponent = section.icon;
@@ -211,6 +213,7 @@ export function LaptopSpecs({ specs }: LaptopSpecsProps) {
           </div>
         </CardContent>
       </Card>
+    </div>
     </div>
   );
 }
