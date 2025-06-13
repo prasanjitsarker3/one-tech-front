@@ -19,11 +19,13 @@ const Billing = () => {
           <CustomInput
             label="First Name"
             placeholder="First Name"
+            required
             {...register("firstName")}
           />
           <CustomInput
             label="Last Name"
             placeholder="Last Name"
+            required
             {...register("lastName")}
           />
         </div>
@@ -32,6 +34,7 @@ const Billing = () => {
         <CustomInput
           label="Street Address"
           placeholder="Street Address"
+          required
           {...register("street")}
         />
 
@@ -40,11 +43,13 @@ const Billing = () => {
           <CustomInput
             label="City"
             placeholder="City"
+            required
             {...register("city")}
           />
           <CustomInput
             label="Region"
             placeholder="Region"
+            required
             {...register("region")}
           />
           <CustomInput
@@ -60,12 +65,14 @@ const Billing = () => {
           <CustomInput
             label="Email"
             type="email"
+            required
             placeholder="Email"
             {...register("email")}
           />
           <CustomInput
             label="Phone"
             type="number"
+            required
             placeholder="(123) 456-7890"
             {...register("phoneNumber")}
           />
@@ -94,7 +101,7 @@ const Billing = () => {
         <textarea
           {...register("orderNotes")}
           rows={3}
-          className="w-full border border-[#E6E6E6] outline-theme-primary px-4 py-[10px] rounded-md"
+          className="w-full border border-[#E6E6E6] focus:outline focus:outline-amber-400 px-4 py-[10px] rounded-md"
           placeholder="Notes about your order, e.g. special notes for delivery"
         ></textarea>
       </div>

@@ -33,7 +33,7 @@ const Checkout = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <section className="flex flex-col lg:flex-row gap-10 xl:gap-6">
             {/* billing information */}
-            <div className="w-full lg:w-2/3">
+            <div className="w-full lg:w-3/5">
               <Billing />
             </div>
 

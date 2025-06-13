@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Search, User, Menu, X, ShoppingCart } from "lucide-react";
 import { toggleDrawer } from "@/redux/Slice/drawerReducer";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 const Header = () => {
   const pathname = usePathname();
@@ -18,6 +18,8 @@ const Header = () => {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
+
+  const cartItem = useAppSelector(state=>state.cart.items)
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -80,7 +82,7 @@ const Header = () => {
     };
   }, [mobileMenuOpen]);
 
-  const cartCount = 3;
+  // const cartCount = 3;
   const handleToggle = () => {
     dispatch(toggleDrawer());
   };
@@ -149,9 +151,9 @@ const Header = () => {
               className="relative cursor-pointer flex items-center justify-center h-8 w-8 text-[#5d4037] hover:text-[#8b5e3c] transition-colors"
             >
               <ShoppingCart className="h-5 w-5" />
-              {cartCount > 0 && (
+              {cartItem.length > 0 && (
                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                  {cartCount}
+                  {cartItem.length}
                 </span>
               )}
             </div>

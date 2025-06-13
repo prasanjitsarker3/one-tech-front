@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { useAppSelector } from "@/redux/hooks";
 import Image from "next/image";
 import { useFormContext } from "react-hook-form";
 
 const Order = () => {
   const { register } = useFormContext();
+  const cartItemData = useAppSelector((state) => state.cart.items);
+
+//   console.log("cartItemData", cartItemData);
 
   return (
     <div className="border border-border-color rounded-lg py-5 px-[18px] xl:p-6">
@@ -12,23 +16,24 @@ const Order = () => {
       <h1 className="text-xl font-medium text-[#1A1A1A]">Order Summary</h1>
 
       {/* ordered items */}
-      <section className="space-y-1 mt-5 lg:mt-4">
-        {items?.map((item: any) => (
+      <section className="space-y-3 mt-5 lg:mt-4">
+        {cartItemData?.map((item: any) => (
           <div
             key={item.id}
             className="flex items-center justify-between gap-2.5"
           >
-            <div className="flex items-center gap-1.5 ">
+            <div className="flex items-center gap-2 ">
               <Image
                 width={40}
                 height={40}
                 src={
+                  item?.photo ||
                   "https://res.cloudinary.com/dp4jxt1xr/image/upload/v1745175940/neoshop-category/bpidg7qubdimte5yj93p.jpg"
                 }
-                alt={item?.product?.title}
+                alt={item?.name}
               />
               <p className="text-sm">
-                {item?.product?.title} <span>x {item?.quantity}</span>
+                {item?.name} <span>x {item?.quantity}</span>
               </p>
             </div>
             <p className="text-sm font-medium">
@@ -44,7 +49,7 @@ const Order = () => {
           {
             label: "Subtotal",
             value:
-              items?.reduce(
+              cartItemData?.reduce(
                 (acc: any, item: any) => acc + item.price * item.quantity,
                 0
               ) ?? 0,
@@ -53,7 +58,7 @@ const Order = () => {
           {
             label: "Total",
             value:
-              (items?.reduce(
+              (cartItemData?.reduce(
                 (acc: any, item: any) => acc + item.price * item.quantity,
                 0
               ) ?? 0) + 0,
@@ -119,32 +124,32 @@ const Order = () => {
 export default Order;
 
 // Dummy Items
-export const items = [
-  {
-    id: 1,
-    quantity: 5,
-    price: 20,
-    product: {
-      title: "Apple Watch",
-    },
-  },
-  {
-    id: 2,
-    quantity: 2,
-    price: 15,
-    product: {
-      title: "Lenovo laptop",
-    },
-  },
-  {
-    id: 3,
-    quantity: 2,
-    price: 70,
-    product: {
-      title: "Airbus Pro",
-    },
-  },
-];
+// export const items = [
+//   {
+//     id: 1,
+//     quantity: 5,
+//     price: 20,
+//     product: {
+//       title: "Apple Watch",
+//     },
+//   },
+//   {
+//     id: 2,
+//     quantity: 2,
+//     price: 15,
+//     product: {
+//       title: "Lenovo laptop",
+//     },
+//   },
+//   {
+//     id: 3,
+//     quantity: 2,
+//     price: 70,
+//     product: {
+//       title: "Airbus Pro",
+//     },
+//   },
+// ];
 
 const paymentMethods = [
   {
@@ -153,10 +158,10 @@ const paymentMethods = [
   },
   {
     id: 2,
-    method: "Paypal",
+    method: "BKash/Nagad",
   },
   {
     id: 3,
-    method: "Amazon Pay",
+    method: "Paypal",
   },
 ];
